@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conversor de Links Shopee</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ee4d2d;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #ee4d2d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d93d20;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #linkConvertido {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🛒 Conversor Shopee</h1>
+
+        <p>
+            Cole o link de um produto da Shopee abaixo
+            para gerar seu link de afiliado.
+        </p>
+
+        <input
+            type="text"
+            id="linkShopee"
+            placeholder="Cole aqui o link da Shopee"
+        >
+
+        <button onclick="converterLink()">
+            Converter Link
+        </button>
+
+        <div id="resultado">
+
+            <p>Seu link de afiliado:</p>
+
+            <input
+                type="text"
+                id="linkConvertido"
+                readonly
+            >
+
+            <button onclick="copiarLink()">
+                Copiar Link
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function converterLink() {
+
+            const link = document.getElementById("linkShopee").value;
+
+            if (link === "") {
+                alert("Cole um link da Shopee primeiro!");
+                return;
+            }
+
+            // Temporariamente vamos apenas mostrar o link.
+            // Depois vamos conectar à API de afiliados da Shopee.
+
+            document.getElementById("linkConvertido").value = link;
+
+            document.getElementById("resultado").style.display = "block";
+        }
+
+        function copiarLink() {
+
+            const campo = document.getElementById("linkConvertido");
+
+            campo.select();
+
+            navigator.clipboard.writeText(campo.value);
+
+            alert("Link copiado!");
+        }
+
+    </script>
+
+</body>
+</html>
